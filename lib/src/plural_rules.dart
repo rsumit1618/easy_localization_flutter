@@ -30,7 +30,7 @@ PluralCase _default_rule() => OTHER;
 
 /// This must be called before evaluating a new rule, because we're using
 /// library-global state to both keep the rules terse and minimize space.
-void startRuleEvaluation(num howMany, [int? precision = 0]) {
+void startRuleEvaluation(num howMany, [int precision = 0]) {
   _n = howMany;
   _precision = precision;
   _i = _n.round();
@@ -49,7 +49,7 @@ num _n = 0;
 
 /// The integer part of [_n]
 int _i = 0;
-int? _precision;
+int _precision;
 
 /// Returns the number of digits in the fractional part of a number
 /// (3.1416 => 4)
@@ -59,7 +59,7 @@ int? _precision;
 /// decide the plural form. For example "1 dollar" vs "1.00 dollars", the
 /// value is 1, but how it is formatted also matters.
 int _decimals(num n) {
-  var str = _precision == null ? '$n' : n.toStringAsFixed(_precision!);
+  var str = _precision == null ? '$n' : n.toStringAsFixed(_precision);
   var result = str.indexOf('.');
   return (result == -1) ? 0 : str.length - result - 1;
 }
@@ -122,10 +122,15 @@ int _t = 0;
 //   w  : 4         (how many digits in t)
 
 PluralCase get ZERO => PluralCase.ZERO;
+
 PluralCase get ONE => PluralCase.ONE;
+
 PluralCase get TWO => PluralCase.TWO;
+
 PluralCase get FEW => PluralCase.FEW;
+
 PluralCase get MANY => PluralCase.MANY;
+
 PluralCase get OTHER => PluralCase.OTHER;
 
 PluralCase _fil_rule() {

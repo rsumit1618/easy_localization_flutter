@@ -33,9 +33,9 @@ import 'localization.dart';
 /// {@endtemplate}
 String tr(
   String key, {
-  List<String>? args,
-  Map<String, String>? namedArgs,
-  String? gender,
+  List<String> args,
+  Map<String, String> namedArgs,
+  String gender,
 }) {
   return Localization.instance
       .tr(key, args: args, namedArgs: namedArgs, gender: gender);
@@ -84,8 +84,8 @@ String tr(
 String plural(
   String key,
   num value, {
-  List<String>? args,
-  NumberFormat? format,
+  List<String> args,
+  NumberFormat format,
 }) {
   return Localization.instance.plural(key, value, args: args, format: format);
 }
